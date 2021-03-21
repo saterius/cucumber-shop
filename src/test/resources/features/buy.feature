@@ -3,8 +3,9 @@ Feature: Buy products
     I want to buy products
 
 Background:
-    Given a product "Bread" with price 20.50 exists
-    And a product "Jam" with price 80.00 exists
+    Given มีสินค้า "Bread" ราคา 20.50 อยู่
+    And มีสินค้า "Jam" ราคา 80.00 อยู่
+    And มีสินค้า "Peanut Butter" ราคา 100 อยู่
 
 Scenario: Buy one product
     When I buy "Bread" with quantity 2
@@ -13,6 +14,7 @@ Scenario: Buy one product
 Scenario: Buy multiple products
     When I buy "Bread" with quantity 2
     And I buy "Jam" with quantity 1
-    Then total should be 121.00
+    And I buy "Peanut Butter" with quantity 2
+    Then total should be 321.00
 
 

@@ -18,7 +18,7 @@ public class BuyStepdefs {
         order = new Order();
     }
 
-    @Given("a product {string} with price {float} exists")
+    @Given("มีสินค้า {string} ราคา {float} อยู่")
     public void a_product_with_price_exists(String name, double price) {
         catalog.addProduct(name, price);
     }
@@ -32,6 +32,21 @@ public class BuyStepdefs {
     @Then("total should be {float}")
     public void total_should_be(double total) {
         assertEquals(total, order.getTotal());
+    }
+
+    @Given("มีสินค้า {string} ราคา {float} อยู่และมีเหลือ {int}")
+    public void a_product_with_price_and_quantity_exists(String name, double price, int quantity) {
+        catalog.addProduct(name, price, quantity);
+    }
+
+    @When("I check {string}")
+    public void i_check_products(String name) {
+        Product prod = catalog.getProduct(name);
+    }
+
+    @Then("{string} have {int} quantity")
+    public void product_exists(String name, int quantity) {
+        assertEquals(quantity, catalog.getProduct(name).getQuantity());
     }
 }
 
